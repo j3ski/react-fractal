@@ -5,12 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import ModuleA from './moduleA';
 import ModuleB from './moduleB';
 import GlobalState from '../utils/GlobalState';
-
-import store from './store';
-import mapStore from '../utils/mapStore';
-
-const moduleAStoreFragment = mapStore(store, state => state.moduleA);
-const moduleBStoreFragment = mapStore(store, state => state.moduleB);
+import Counter from './counter';
+import Counters from './Counters';
 
 export default () => (
     <Switch>
@@ -18,16 +14,23 @@ export default () => (
             exact
             path='/moduleA' 
             component={ModuleA}
-            store={moduleAStoreFragment}
+            storeSelector={state => state.moduleA}
             key='moduleA'
         />
         <ProvideRoute 
             exact
             path='/moduleB'
             component={ModuleB}
-            store={moduleBStoreFragment}
+            storeSelector={state => state.moduleB}
             key='moduleB'
         />
+        <ProvideRoute
+            exact
+            path='/counter'
+            component={Counter}
+            storeSelector={state => state.counter}
+            key='counter' />
+        <Route exact path='/counters' component={Counters} />
         <Route component={GlobalState} />
     </Switch>
 );

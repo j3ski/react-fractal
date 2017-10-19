@@ -5,6 +5,8 @@ export default () => (
     <nav>
         <Link to='/'>Index</Link>
         <Link to='/moduleA'>Module A</Link>
-        <Link to='/moduleB'> Module B</Link>
+        <Link to='/moduleB'>Module B</Link>
+        <Link to='/counter'>Counter</Link>
+        <Link to='/counters'>Counters</Link>
     </nav>
 );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import ProviderSelector from './ProviderSelector';
 
-export default ({store, ...rest}) => (
-    <Provider store={store}>
+export default ({storeSelector, ...rest}) => (
+    <ProviderSelector storeSelector={storeSelector}>
         <Route {...rest} />
-    </Provider>
+    </ProviderSelector>
 );
