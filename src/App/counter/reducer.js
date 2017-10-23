@@ -18,3 +18,11 @@ export const decrement = () => ({
     type: ADD,
     payload: -1
 });
+
+export const incrementAsync = () => {
+    console.log('action creator');
+    return dispatch => {
+        console.log('action invocation');
+        dispatch(increment());
+    }
+}

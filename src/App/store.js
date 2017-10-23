@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import localReducer from '../utils/localReducer';
 
@@ -6,6 +7,8 @@ import app from './reducer';
 import moduleA from './moduleA/reducer';
 import moduleB from './moduleB/reducer';
 import counter from './counter/reducer';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default createStore(
     combineReducers({
@@ -16,5 +19,5 @@ export default createStore(
         counterA: localReducer(counter, 'counterA'),
         counterB: localReducer(counter, 'counterB')
     }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
 );
